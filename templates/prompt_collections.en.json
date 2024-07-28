@@ -1,0 +1,74 @@
+{
+    "cola": {
+        "name": "is_this_correct",
+        "jinja": "{% for dict_item in examples %}\n{{dict_item.sentence}}\nIs this example grammatically correct and sensible?\nAnswer: {{answer_choices[dict_item.label]}}\n{% endfor %}\n{{sentence}}\nIs this example grammatically correct and sensible?\nAnswer: |||\n{{ answer_choices[label] }}",
+        "reference": "",
+        "answer_choices": "No ||| Yes"
+    },
+    "mnli": {
+        "name": "mnli",
+        "jinja": "{% for dict_item in examples %}\nTake the following as truth: {{dict_item.premise}}\nThen the following statement: \"{{dict_item.hypothesis}}\" is {{\"true\"}}, {{\"false\"}}, or {{\"inconclusive\"}}?\nAnswer: {{answer_choices[dict_item.label]}}\n{% endfor %}\nTake the following as truth: {{premise}}\nThen the following statement: \"{{hypothesis}}\" is {{\"true\"}}, {{\"false\"}}, or {{\"inconclusive\"}}?\nAnswer: |||\n{{ answer_choices[label] }}",
+        "reference": "Sanh et al. 2021",
+        "answer_choices": "True ||| Inconclusive ||| False"
+    },
+    "mrpc": {
+        "name": "same thing",
+        "jinja": "{% for dict_item in examples %}\nDo the two sentences mean the same thing (answer yes or no)?\nSentence 1: {{dict_item['sentence1']}}\nSentence 2: {{dict_item['sentence2']}}\nAnswer: {{answer_choices[dict_item.label]}}\n{% endfor %}\nDo the two sentences mean the same thing (answer yes or no)?\nSentence 1: {{sentence1}}\nSentence 2: {{sentence2}}\nAnswer: |||\n{{ answer_choices[label] }}",
+        "reference": "",
+        "answer_choices": "no ||| yes"
+    },
+    "qnli": {
+        "name": "same thing",
+        "jinja": "{% for dict_item in examples %}\nDoes the following sentence answer the question?\nQuestion: {{dict_item['question']}}\nSentence: {{dict_item['sentence']}}\nAnswer: {{answer_choices[dict_item.label]}}\n{% endfor %}\nDoes the following sentence answer the question?\nQuestion: {{question}}\nSentence: {{sentence}}\nAnswer: |||\n{{ answer_choices[label] }}",
+        "reference": "",
+        "answer_choices": "yes ||| no"
+    },
+    "qqp": {
+        "name": "same thing",
+        "jinja": "{% for dict_item in examples %}\nQuestion 1: {{dict_item.question1}}\nQuestion 2: {{dict_item.question2}}\nDo these two following questions convey the same meaning? Yes or no?\nAnswer: {{answer_choices[dict_item.label]}}\n{% endfor %}\nQuestion 1: {{question1}}\nQuestion 2: {{question2}}\nDo these two following questions convey the same meaning? Yes or no?\nAnswer: |||\n{{ answer_choices[label] }}",
+        "reference": "",
+        "answer_choices": "No ||| Yes"
+    },
+    "rte": {
+        "name": "same thing",
+        "jinja": "{% for dict_item in examples %}\n{{dict_item.sentence1}}\nDoes this mean that \"{{dict_item.sentence2}}\" is true? Yes or no?\nAnswer: {{answer_choices[dict_item.label]}}\n{% endfor %}\n{{sentence1}}\nDoes this mean that \"{{sentence2}}\" is true? Yes or no?\nAnswer: |||\n{{ answer_choices[label] }}",
+        "reference": "",
+        "answer_choices": "Yes ||| No"
+    },
+    "sst2": {
+        "name": "same thing",
+        "jinja": "{% for dict_item in examples %}\n{{dict_item.sentence}}\nQuestion: Was that sentence {{\"positive\"}} or {{\"negative\"}}?\nAnswer: {{answer_choices[dict_item.label]}}\n{% endfor %}\n{{sentence}}\nQuestion: Was that sentence {{\"positive\"}} or {{\"negative\"}}?\nAnswer: |||\n{{ answer_choices[label] }}",
+        "reference": "",
+        "answer_choices": "negative ||| positive"
+    },
+    "vnrte": {
+        "name": "same thing",
+        "jinja": "{% for dict_item in examples %}\n{{dict_item.sentence1}}\nDoes this mean that \"{{dict_item.sentence2}}\" is true? Yes or no?\nAnswer: {{answer_choices[dict_item.label]}}\n{% endfor %}\n{{sentence1}}\nDoes this mean that \"{{sentence2}}\" is true? Yes or no?\nAnswer: |||\n{{ answer_choices[label] }}",
+        "reference": "",
+        "answer_choices": "Yes ||| No"
+    },
+    "vsfc": {
+        "name": "vsfc sentiment",
+        "jinja": "{% for dict_item in examples %}\nDoes the following sentence have a {{\"positive\"}}, {{\"negative\"}}, or {{\"neutral\"}} sentiment?\nSentence: {{dict_item.sentence}}\nAnswer: {{answer_choices[dict_item.label]}}\n{% endfor %}\nDoes the following sentence have a {{\"positive\"}}, {{\"negative\"}}, or {{\"neutral\"}} sentiment?\nSentence: {{sentence}}\nAnswer: |||\n{{ answer_choices[label] }}",
+        "reference": "",
+        "answer_choices": "negative ||| neutral ||| positive"
+    },
+    "vsmec": {
+        "name": "vsmec sentiment",
+        "jinja": "{% for dict_item in examples %}\nGiven the sentiments: anger, disgust, enjoyment, fear, sadness, surprise, or other, which one best describes the following sentence?\nSentence: {{dict_item.sentence}}\nAnswer: {{answer_choices[dict_item.label]}}\n{% endfor %}\nGiven the sentiments: anger, disgust, enjoyment, fear, sadness, surprise, or other, which one best describes the following sentence?\nSentence: {{sentence}}\nAnswer: |||\n{{ answer_choices[label] }}",
+        "reference": "",
+        "answer_choices": "Anger ||| Disgust ||| Enjoyment ||| Fear ||| Other ||| Sadness ||| Surprise"
+    },
+    "vtoc": {
+        "name": "vtoc sentiment",
+        "jinja": "{% for dict_item in examples %}\nThese are the topics of a news article: Automobile, Business, Digital, Education, Entertainment, Health, Law, Life, News, Perspective, Relax, Science, Sports, Travel, World. \nAssign a topic to the following sentence: {{dict_item.sentence}}\nAnswer: {{answer_choices[dict_item.label]}}\n{% endfor %}\nThese are the topics of a news article: Automobile, Business, Digital, Education, Entertainment, Health, Law, Life, News, Perspective, Relax, Science, Sports, Travel, World.\nAssign a topic to the following sentence: {{sentence}}\nAnswer: |||\n{{ answer_choices[label] }}",
+        "reference": "",
+        "answer_choices": "Automobile ||| Business ||| Digital ||| Education ||| Entertainment ||| Health ||| Law ||| Life ||| News ||| Perspective ||| Relax ||| Science ||| Sports ||| Travel ||| World"
+    },
+    "wnli": {
+        "name": "same thing",
+        "jinja": "{% for dict_item in examples %}\nAssume that the following is true: {{dict_item.sentence1}}\nDoes this mean that \"{{dict_item.sentence2}}\" (answer yes or no)?\nAnswer: {{answer_choices[dict_item.label]}}\n{% endfor %}\nAssume that the following is true: {{sentence1}}\nDoes this mean that \"{{sentence2}}\" (answer yes or no)?\nAnswer: |||\n{{ answer_choices[label] }}",
+        "reference": "",
+        "answer_choices": "no ||| yes"
+    }
+}

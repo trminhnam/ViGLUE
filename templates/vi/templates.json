@@ -1,0 +1,426 @@
+{
+    "ax": [
+        {
+            "name": "relationship_between_hypothesis_premise",
+            "jinja": "The relationship between the following sentences can be characterized as {{answer_choices[0]}} (one sentence implies the other), {{answer_choices[1]}} (the sentences don't necessarily imply or contradict one another), or {{answer_choices[2]}} (the sentences contract each other).\nSentence 1: {{hypothesis}}\nSentence 2: {{premise}} |||\n{{answer_choices[label]}}",
+            "reference": "",
+            "answer_choices": "entailment ||| neutral ||| contradiction"
+        },
+        {
+            "name": "based_on_prem_is_hypothesis",
+            "jinja": "{{premise}}\nGiven the above, is it necessarily true that \"{{hypothesis}}\"? {{answer_choices[0]}}, {{answer_choices[2]}}, or {{answer_choices[1]}}? ||| {{ answer_choices[label] }}",
+            "reference": "",
+            "answer_choices": "yes ||| maybe ||| no"
+        },
+        {
+            "name": "does_hyp_follow_from_prem",
+            "jinja": "Consider the hypothesis that \"{{hypothesis}}\"\nDoes this follow from the knowledge that \"{{premise}}\"\n{{answer_choices[0]}}, {{answer_choices[2]}}, or {{answer_choices[1]}}?\n|||\n{{answer_choices[label]}}",
+            "reference": "",
+            "answer_choices": "yes ||| maybe ||| no"
+        },
+        {
+            "name": "does_this_imply",
+            "jinja": "{{premise}}\nDoes the above sentence imply or contradict that \"{{hypothesis}}\"? Please answer as \"{{answer_choices[0]}}\", \"{{answer_choices[2]}}\", or \"{{answer_choices[1]}}\".\n|||\n{{answer_choices[label]}}",
+            "reference": "",
+            "answer_choices": "imply ||| neither ||| contradict"
+        },
+        {
+            "name": "does_this_support",
+            "jinja": "Consider the {{\"premise\"}}:\nPremise: {{premise}}\nDoes the above premise support the following hypothesis?\nHypothesis: {{hypothesis}}\nPlease answer as \"{{answer_choices[0]}}\", \"{{answer_choices[2]}}\", or \"{{answer_choices[1]}}\".\n|||\n{{answer_choices[label]}}",
+            "reference": "",
+            "answer_choices": "supports ||| neither ||| contradicts"
+        }
+    ],
+    "cola": [
+        {
+            "name": "Make sense yes no",
+            "jinja": "Does the following sentence make sense and use correct English? Please answer {{\"yes\"}} or {{\"no\"}}.\n{{sentence}}\n|||\n{{ answer_choices[label] }}",
+            "reference": "",
+            "answer_choices": "no ||| yes"
+        },
+        {
+            "name": "is_this_correct",
+            "jinja": "{{sentence}}\nIs this example grammatically correct and sensible?\n|||\n{{ answer_choices[label] }}",
+            "reference": "A sample glue template",
+            "answer_choices": "No ||| Yes"
+        },
+        {
+            "name": "editing",
+            "jinja": "I'm copy-editing a story for publication. It has the following sentence in it:\n{{sentence}}\nDoes this sentence make sense and is it grammatically correct? Please answer {{\"yes or no\"}}.\n|||\n{{ answer_choices[label] }}",
+            "reference": "",
+            "answer_choices": "no ||| yes"
+        },
+        {
+            "name": "Following sentence acceptable",
+            "jinja": "The following sentence is either \"{{\"acceptable\"}}\", meaning it is grammatically correct and makes sense, or \"{{\"unacceptable\"}}\". Which is it?\n{{sentence}}\n|||\n{{ answer_choices[label] }}",
+            "reference": "",
+            "answer_choices": "unacceptable ||| acceptable"
+        },
+        {
+            "name": "Previous sentence acceptable",
+            "jinja": "{{sentence}}\nI'm worried that sentence didn't make any sense, or was grammatically incorrect. Was it correct?\n|||\n{{ answer_choices[label] }}",
+            "reference": "",
+            "answer_choices": "no ||| yes"
+        }
+    ],
+    "mnli": [
+        {
+            "name": "always/sometimes/never",
+            "jinja": "Suppose it's true that {{premise}} Then, is \"{{hypothesis}}\" {{\"always\"}}, {{\"sometimes\"}}, or {{\"never\"}} true? ||| {{ answer_choices[label] }}",
+            "reference": "Sanh et al. 2021",
+            "answer_choices": "Always ||| Sometimes ||| Never"
+        },
+        {
+            "name": "based on the previous passage",
+            "jinja": "{{premise}} Based on the previous passage, is it true that \"{{hypothesis}}\"? Yes, no, or maybe? ||| {{ answer_choices[label] }}",
+            "reference": "Adapted from the BoolQ prompts in Schick & Schütze 2021.",
+            "answer_choices": "Yes ||| Maybe ||| No"
+        },
+        {
+            "name": "justified in saying",
+            "jinja": "{{premise}} Are we justified in saying that \"{{hypothesis}}\"? Yes, no, or maybe? ||| {{ answer_choices[label] }} ",
+            "reference": "Webson & Pavlick 2021",
+            "answer_choices": "Yes ||| Maybe ||| No"
+        },
+        {
+            "name": "GPT-3 style",
+            "jinja": "{{premise}}\nQuestion: {{hypothesis}} True, False, or Neither? ||| {{ answer_choices[label] }}",
+            "reference": "Same as reported in Figure G7 of the GPT-3 paper, except that there is no task identifying tokens like \"anli R1: \".",
+            "answer_choices": "True ||| Neither ||| False"
+        },
+        {
+            "name": "MNLI crowdsource",
+            "jinja": "{{premise}} Using only the above description and what you know about the world, \"{{hypothesis}}\" is definitely correct, incorrect, or inconclusive? ||| {{ answer_choices[label] }}",
+            "reference": "Adapted from Williams et al. 2018's instructions to crowdsourcing workers.",
+            "answer_choices": "Correct ||| Inconclusive ||| Incorrect"
+        },
+        {
+            "name": "does it follow that",
+            "jinja": "Given that {{premise}} Does it follow that {{hypothesis}} Yes, no, or maybe? ||| {{ answer_choices[label] }}",
+            "reference": "Sanh et al. 2021",
+            "answer_choices": "Yes ||| Maybe ||| No"
+        },
+        {
+            "name": "can we infer",
+            "jinja": "Suppose {{premise}} Can we infer that \"{{hypothesis}}\"? Yes, no, or maybe? ||| {{ answer_choices[label] }} ",
+            "reference": "Webson & Pavlick 2021",
+            "answer_choices": "Yes ||| Maybe ||| No"
+        },
+        {
+            "name": "consider always/sometimes/never",
+            "jinja": "{{premise}} \n\nKeeping in mind the above text, consider: {{hypothesis}} Is this {{\"always\"}}, {{\"sometimes\"}}, or {{\"never\"}} correct? ||| {{ answer_choices[label] }}",
+            "reference": "Sanh et al. 2021",
+            "answer_choices": "Always ||| Sometimes ||| Never"
+        },
+        {
+            "name": "must be true",
+            "jinja": "Given that {{premise}} Therefore, it must be true that \"{{hypothesis}}\"? Yes, no, or maybe? ||| {{ answer_choices[label] }} ",
+            "reference": "Sanh et al. 2021",
+            "answer_choices": "Yes ||| Maybe ||| No"
+        },
+        {
+            "name": "does this imply",
+            "jinja": "{{premise}} \n\nQuestion: Does this imply that \"{{hypothesis}}\"? Yes, no, or maybe? ||| {{answer_choices[label]}}",
+            "reference": "Sanh et al. 2021",
+            "answer_choices": "Yes ||| Maybe ||| No"
+        },
+        {
+            "name": "claim true/false/inconclusive",
+            "jinja": "{{premise}} Based on that information, is the claim: \"{{hypothesis}}\" {{\"true\"}}, {{\"false\"}}, or {{\"inconclusive\"}}? ||| {{ answer_choices[label] }}",
+            "reference": "Sanh et al. 2021",
+            "answer_choices": "True ||| Inconclusive ||| False"
+        },
+        {
+            "name": "take the following as truth",
+            "jinja": "Take the following as truth: {{premise}}\nThen the following statement: \"{{hypothesis}}\" is {{\"true\"}}, {{\"false\"}}, or {{\"inconclusive\"}}? ||| {{ answer_choices[label] }}",
+            "reference": "Sanh et al. 2021",
+            "answer_choices": "True ||| Inconclusive ||| False"
+        },
+        {
+            "name": "should assume",
+            "jinja": "Given {{premise}} Should we assume that \"{{hypothesis}}\" is true? Yes, no, or maybe? ||| {{ answer_choices[label] }} ",
+            "reference": "Webson & Pavlick 2021",
+            "answer_choices": "Yes ||| Maybe ||| No"
+        },
+        {
+            "name": "guaranteed true",
+            "jinja": "Given {{premise}} Is it guaranteed true that \"{{hypothesis}}\"? Yes, no, or maybe? ||| {{ answer_choices[label] }} ",
+            "reference": "Webson & Pavlick 2021",
+            "answer_choices": "Yes ||| Maybe ||| No"
+        },
+        {
+            "name": "guaranteed/possible/impossible",
+            "jinja": "Assume it is true that {{premise}} \n\nTherefore, \"{{hypothesis}}\" is {{\"guaranteed\"}}, {{\"possible\"}}, or {{\"impossible\"}}? ||| {{ answer_choices[label] }}",
+            "reference": "Sanh et al. 2021",
+            "answer_choices": "Guaranteed ||| Possible ||| Impossible"
+        }
+    ],
+    "mrpc": [
+        {
+            "name": "want to know",
+            "jinja": "I want to know whether the following two sentences mean the same thing.\n{{sentence1}}\n{{sentence2}}\nDo they?\n|||\n{{ answer_choices[label] }}",
+            "reference": "",
+            "answer_choices": "no ||| yes"
+        },
+        {
+            "name": "paraphrase",
+            "jinja": "Does the sentence\n{{sentence1}}\nparaphrase (that is, mean the same thing as) this sentence?\n{{sentence2}}\n|||\n{{ answer_choices[label] }}",
+            "reference": "",
+            "answer_choices": "no ||| yes"
+        },
+        {
+            "name": "equivalent",
+            "jinja": "Are the following two sentences \"{{\"equivalent\"}}\" or \"{{\"not equivalent\"}}\"?\n{{sentence1}}\n{{sentence2}}\n|||\n{{ answer_choices[label] }}",
+            "reference": "",
+            "answer_choices": "not equivalent ||| equivalent"
+        },
+        {
+            "name": "replace",
+            "jinja": "Can I replace the sentence\n{{sentence1}}\nwith the sentence\n{{sentence2}}\nand have it mean the same thing?\n|||\n{{ answer_choices[label] }}",
+            "reference": "",
+            "answer_choices": "no ||| yes"
+        },
+        {
+            "name": "same thing",
+            "jinja": "Do the following two sentences mean the same thing?\n{{sentence1}}\n{{sentence2}}\n|||\n{{ answer_choices[label] }}",
+            "reference": "",
+            "answer_choices": "no ||| yes"
+        }
+    ],
+    "qnli": [
+        {
+            "name": "have all you need",
+            "jinja": "{{sentence}}\nDoes that sentence have all you need to answer the question \"{{question}}\"?\n|||\n{{answer_choices[label]}}",
+            "reference": "",
+            "answer_choices": "yes ||| no"
+        },
+        {
+            "name": "based only on",
+            "jinja": "Can you answer the question \"{{question}}\" based only on the following:\n{{sentence}}\n|||\n{{answer_choices[label]}}",
+            "reference": "",
+            "answer_choices": "yes ||| no"
+        },
+        {
+            "name": "imply",
+            "jinja": "Does knowing that \"{{sentence}}\" imply that I know the answer to \"{{question}}\"\n|||\n{{answer_choices[label]}}",
+            "reference": "",
+            "answer_choices": "yes ||| no"
+        },
+        {
+            "name": "want to know",
+            "jinja": "I want to know the answer to the following question:\n{{question}}\nAll the background I'm provided with is that \"{{sentence}}\". Is that enough to answer the question?\n|||\n{{answer_choices[label]}}",
+            "reference": "",
+            "answer_choices": "yes ||| no"
+        },
+        {
+            "name": "possible to answer",
+            "jinja": "Consider the passage:\n{{sentence}}\nand the question:\n{{question}}\nIs it possible to answer this question based only on the information in the passage? {{\"A) yes\"}} or {{\"B) no\"}}\n|||\n{{answer_choices[label]}}",
+            "reference": "",
+            "answer_choices": "yes ||| no"
+        }
+    ],
+    "qqp": [
+        {
+            "name": "quora",
+            "jinja": "I'm an administrator on the website Quora. There are two posts, one that asks \"{{question1}}\" and another that asks \"{{question2}}\". I can merge questions if they are asking the same thing. Can I merge these two questions? ||| {{ answer_choices[label] }}",
+            "reference": "",
+            "answer_choices": "no ||| yes"
+        },
+        {
+            "name": "duplicate or not",
+            "jinja": "{{question1}}\n{{question2}}\nPick one: These questions are \"{{\"duplicates\"}}\" or \"{{\"not duplicates\"}}\".\n|||\n{{ answer_choices[label] }}",
+            "reference": "",
+            "answer_choices": "not duplicates ||| duplicates"
+        },
+        {
+            "name": "same thing",
+            "jinja": "Are the questions \"{{question1}}\" and \"{{question2}}\" asking the same thing? ||| {{ answer_choices[label] }}",
+            "reference": "",
+            "answer_choices": "no ||| yes"
+        },
+        {
+            "name": "answer",
+            "jinja": "Can an answer to \"{{question1}}\" also be used to answer \"{{question2}}\"? ||| {{ answer_choices[label] }}",
+            "reference": "",
+            "answer_choices": "no ||| yes"
+        },
+        {
+            "name": "meaning",
+            "jinja": "Question 1: {{question1}}\nQuestion 2: {{question2}}\n\nDo these two questions convey the same meaning? Yes or no? ||| {{answer_choices[label]}}",
+            "reference": "",
+            "answer_choices": "No ||| Yes"
+        },
+        {
+            "name": "duplicate",
+            "jinja": "I received the questions \"{{question1}}\" and \"{{question2}}\". Are they duplicates? ||| {{ answer_choices[label] }}",
+            "reference": "",
+            "answer_choices": "no ||| yes"
+        }
+    ],
+    "rte": [
+        {
+            "name": "mean",
+            "jinja": "{{sentence1}}\nDoes this mean that \"{{sentence2}}\" is true? {{\"A) yes or B) no.\"}}\n|||\n{{answer_choices[label]}}",
+            "reference": "",
+            "answer_choices": "yes ||| no"
+        },
+        {
+            "name": "does the claim… follow the fact…",
+            "jinja": "Does the claim \"{{sentence2}}\" follow from the fact that \"{{sentence1}}\"? Please answer either {{\"yes\"}} or {{\"no\"}}.\n|||\n{{answer_choices[label]}}",
+            "reference": "",
+            "answer_choices": "yes ||| no"
+        },
+        {
+            "name": "entailment explained",
+            "jinja": "We say that one sentence \"{{\"entails\"}}\" another sentence when the first sentence implies the second sentence. Consider the following two sentences:\n{{sentence1}}\n{{sentence2}}\nIs the relationship from the first to the second sentence \"{{\"entailment\"}}\" or \"{{\"not entailment\"}}\"?\n|||\n{{answer_choices[label]}}",
+            "reference": "",
+            "answer_choices": "entailment ||| not entailment"
+        },
+        {
+            "name": "imply",
+            "jinja": "Does \"{{sentence1}}\" imply that \"{{sentence2}}\"? Please answer either {{\"yes\"}} or {{\"no\"}}.\n|||\n{{answer_choices[label]}}",
+            "reference": "",
+            "answer_choices": "yes ||| no"
+        },
+        {
+            "name": "imply separated",
+            "jinja": "{{sentence1}}\nDoes this imply\n{{sentence2}}\nPlease answer {{\"A) yes or B) no.\"}}\n|||\n{{answer_choices[label]}}",
+            "reference": "",
+            "answer_choices": "yes ||| no"
+        }
+    ],
+    "sst2": [
+        {
+            "name": "positive negative after",
+            "jinja": "{{sentence}}\nQuestion: Was that sentence {{\"positive\"}} or {{\"negative\"}}? Answer: ||| {{ answer_choices[label] }}",
+            "reference": "",
+            "answer_choices": "negative ||| positive"
+        },
+        {
+            "name": "review",
+            "jinja": "I'm reading a review that says \"{{sentence}}\".\n\nDo you think the review is {{\"positive\"}} or {{\"negative\"}}? ||| {{ answer_choices[label] }}",
+            "reference": "",
+            "answer_choices": "negative ||| positive"
+        },
+        {
+            "name": "said",
+            "jinja": "Someone just said to me \"{{sentence}}\".\n\nDo you think they are {{\"sad\"}} or {{\"happy\"}}? ||| {{ answer_choices[label] }}",
+            "reference": "",
+            "answer_choices": "sad ||| happy"
+        },
+        {
+            "name": "following positive negative",
+            "jinja": "Does the following sentence have a {{\"positive\"}} or {{\"negative\"}} sentiment?\n{{sentence}}\n|||\n{{ answer_choices[label] }}",
+            "reference": "",
+            "answer_choices": "negative ||| positive"
+        },
+        {
+            "name": "happy or mad",
+            "jinja": "Someone sent me an email with the sentence \"{{sentence}}\". Do you think they are feeling {{\"good\"}} or {{\"bad\"}}? ||| {{ answer_choices[label] }}",
+            "reference": "",
+            "answer_choices": "bad ||| good"
+        }
+    ],
+    "stsb": [
+        {
+            "name": "rank",
+            "jinja": "Rate on a scale from {{\"0.0\"}} to {{\"5.0\"}} how similar the sentences \"{{sentence1}}\" and \"{{sentence2}}\" are. ||| {{ (((5*label) | round )/5) }}",
+            "reference": "",
+            "answer_choices": null
+        },
+        {
+            "name": "rate",
+            "jinja": "Please rate how similar these two sentences are from {{\"0.0\"}} to {{\"5.0\"}}.\nSentence A: {{sentence1}}\nSentence B: {{sentence2}}\n|||\n{{ (((5*label) | round )/5) }}",
+            "reference": "",
+            "answer_choices": null
+        },
+        {
+            "name": "examples",
+            "jinja": "Please give me a score denoting the similarity of the following two sentences:\nSentence 1: {{sentence1}}\nSentence 2: {{sentence2}}\nYour score should be something like {{\"3.4\"}}, where {{\"0.0 means very dissimilar, 2.5 means kind of similar, and 5.0 means very similar\"}}.\n|||\n{{ (((5*label) | round )/5) }}",
+            "reference": "",
+            "answer_choices": null
+        },
+        {
+            "name": "similarity",
+            "jinja": "I need to know how similar these two passages are:\n- {{sentence1}}\n- {{sentence2}}\n\nQuestion: Can you give me a number from {{\"0.0 to 5.0\"}} that denotes how similar they are, where {{\"0.0\"}} means totally dissimilar and {{\"5.0\"}} means extremely similar?\nAnswer:\n|||\n{{ (((5*label) | round )/5) }}",
+            "reference": "",
+            "answer_choices": null
+        },
+        {
+            "name": "score",
+            "jinja": "I need to assign a score from {{\"0.0 to 5.0\"}} that denotes how similar the following two sentences are:\nA: {{sentence1}}\nB: {{sentence2}}\nWhat score should I assign?\n|||\n{{ (((5*label) | round )/5) }}",
+            "reference": "",
+            "answer_choices": null
+        }
+    ],
+    "wnli": [
+        {
+            "name": "custom",
+            "jinja": "Câu 1: {{sentence1}}\nCâu 2: {{sentence2}}\n\nNếu câu 1 đúng thì câu 2 có đúng không (trả lời có hoặc không)?|||\n{{answer_choices[label]}}",
+            "reference": "",
+            "answer_choices": "không ||| có"
+        },
+        {
+            "name": "mean",
+            "jinja": "Assume that the following is true:\n{{sentence1}}\nDoes this mean that \"{{sentence2}}\" (answer yes or no)?\n|||\n{{answer_choices[label]}}",
+            "reference": "",
+            "answer_choices": "no ||| yes"
+        },
+        {
+            "name": "confident",
+            "jinja": "If it's true that\n{{sentence1}}\nhow {{\"confident\"}} should I be that\n{{sentence2}}\n{{\"very confident or not confident?\"}}\n|||\n{{answer_choices[label]}}",
+            "reference": "",
+            "answer_choices": "not confident ||| very confident"
+        },
+        {
+            "name": "entailment explained",
+            "jinja": "{{\"Entailment\"}} means that the second sentence follows from the first sentence. Are the following two sentences an example of entailment?\n{{sentence1}}\n{{sentence2}}\n|||\n{{answer_choices[label]}}",
+            "reference": "",
+            "answer_choices": "no ||| yes"
+        },
+        {
+            "name": "justified",
+            "jinja": "Someone told me \"{{sentence1}}\" Now, I think that \"{{sentence2}}\" Am I justified in thinking this?\n|||\n{{answer_choices[label]}}",
+            "reference": "",
+            "answer_choices": "no ||| yes"
+        },
+        {
+            "name": "imply",
+            "jinja": "{{sentence1}}\n{{sentence2}}\nDoes the first sentence imply the second sentence?\n|||\n{{answer_choices[label]}}",
+            "reference": "",
+            "answer_choices": "no ||| yes"
+        }
+    ],
+    "vnrte": [
+        {
+            "name": "mean",
+            "jinja": "{{sentence1}}\nDoes this mean that \"{{sentence2}}\" is true? {{\"A) yes or B) no.\"}}\n|||\n{{answer_choices[label]}}",
+            "reference": "",
+            "answer_choices": "yes ||| no"
+        },
+        {
+            "name": "does the claim… follow the fact…",
+            "jinja": "Does the claim \"{{sentence2}}\" follow from the fact that \"{{sentence1}}\"? Please answer either {{\"yes\"}} or {{\"no\"}}.\n|||\n{{answer_choices[label]}}",
+            "reference": "",
+            "answer_choices": "yes ||| no"
+        },
+        {
+            "name": "entailment explained",
+            "jinja": "We say that one sentence \"{{\"entails\"}}\" another sentence when the first sentence implies the second sentence. Consider the following two sentences:\n{{sentence1}}\n{{sentence2}}\nIs the relationship from the first to the second sentence \"{{\"entailment\"}}\" or \"{{\"not entailment\"}}\"?\n|||\n{{answer_choices[label]}}",
+            "reference": "",
+            "answer_choices": "entailment ||| not entailment"
+        },
+        {
+            "name": "imply",
+            "jinja": "Does \"{{sentence1}}\" imply that \"{{sentence2}}\"? Please answer either {{\"yes\"}} or {{\"no\"}}.\n|||\n{{answer_choices[label]}}",
+            "reference": "",
+            "answer_choices": "yes ||| no"
+        },
+        {
+            "name": "imply separated",
+            "jinja": "{{sentence1}}\nDoes this imply\n{{sentence2}}\nPlease answer {{\"A) yes or B) no.\"}}\n|||\n{{answer_choices[label]}}",
+            "reference": "",
+            "answer_choices": "yes ||| no"
+        }
+    ]
+}

@@ -1,0 +1,40 @@
+{
+    "cola": {
+        "matthews_correlation": 0.0
+    },
+    "mnli": {
+        "accuracy": 35.45
+    },
+    "mrpc": {
+        "accuracy": 68.38,
+        "f1": 81.22
+    },
+    "qnli": {
+        "accuracy": 50.54
+    },
+    "qqp": {
+        "accuracy": 63.18,
+        "f1": 0.0
+    },
+    "rte": {
+        "accuracy": 52.71
+    },
+    "sst2": {
+        "accuracy": 50.92
+    },
+    "vnrte": {
+        "accuracy": 53.11
+    },
+    "vsfc": {
+        "accuracy": 50.85
+    },
+    "vsmec": {
+        "accuracy": 31.2
+    },
+    "vtoc": {
+        "accuracy": 6.77
+    },
+    "wnli": {
+        "accuracy": 56.34
+    }
+}
